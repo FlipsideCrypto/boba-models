@@ -11,15 +11,19 @@ cleanup_time:
 deploy_streamline_tables:
 	rm -f package-lock.yml && dbt clean && dbt deps
 ifeq ($(findstring dev,$(DBT_TARGET)),dev)
-	dbt run -m "fsc_evm,tag:bronze_external" --vars '{"STREAMLINE_USE_DEV_FOR_EXTERNAL_TABLES":True}' -t $(DBT_TARGET)
+	dbt run -m "fsc_evm,tag:bronze_core" "fsc_evm,tag:bronze_receipts" --vars '{"STREAMLINE_USE_DEV_FOR_EXTERNAL_TABLES":True}' -t $(DBT_TARGET)
 else
-	dbt run -m "fsc_evm,tag:bronze_external" -t $(DBT_TARGET)
+	dbt run -m "fsc_evm,tag:bronze_core" "fsc_evm,tag:bronze_receipts" -t $(DBT_TARGET)
 endif
-	dbt run -m "fsc_evm,tag:streamline_core_complete" "fsc_evm,tag:streamline_core_realtime" "fsc_evm,tag:utils" --full-refresh -t $(DBT_TARGET)
+	dbt run -m "fsc_evm,tag:streamline_core_complete" "fsc_evm,tag:streamline_core_realtime" "fsc_evm,tag:streamline_core_realtime_receipts" "fsc_evm,tag:streamline_core_complete_receipts" "fsc_evm,tag:utils" --full-refresh -t $(DBT_TARGET)
 
 deploy_streamline_requests:
 	rm -f package-lock.yml && dbt clean && dbt deps
-	dbt run -m "fsc_evm,tag:streamline_core_complete" "fsc_evm,tag:streamline_core_realtime" --vars '{"STREAMLINE_INVOKE_STREAMS":True}' -t $(DBT_TARGET)
+	dbt run -m "fsc_evm,tag:streamline_core_complete" "fsc_evm,tag:streamline_core_realtime" "fsc_evm,tag:streamline_core_realtime_receipts" "fsc_evm,tag:streamline_core_complete_receipts" --vars '{"STREAMLINE_INVOKE_STREAMS":True}' -t $(DBT_TARGET)
+
+deploy_streamline_history:
+	rm -f package-lock.yml && dbt clean && dbt deps
+	dbt run -m "fsc_evm,tag:streamline_core_complete" "fsc_evm,tag:streamline_core_history" "fsc_evm,tag:streamline_core_history_receipts" "fsc_evm,tag:streamline_core_complete_receipts" --vars '{"STREAMLINE_INVOKE_STREAMS":True}' -t $(DBT_TARGET)
 
 deploy_github_actions:
 	dbt run -s livequery_models.deploy.marketplace.github --vars '{"UPDATE_UDFS_AND_SPS":True}' -t $(DBT_TARGET)
@@ -41,4 +45,4 @@ else
 	dbt run-operation fsc_utils.create_gha_tasks --vars '{"START_GHA_TASKS":True}' -t $(DBT_TARGET)
 endif
 
-.PHONY: deploy_streamline_functions deploy_streamline_tables deploy_streamline_requests deploy_github_actions cleanup_time deploy_new_github_action
+.PHONY: deploy_streamline_functions deploy_streamline_tables deploy_streamline_requests deploy_github_actions cleanup_time deploy_new_github_action deploy_streamline_history
