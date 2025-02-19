@@ -42,4 +42,4 @@ jobs:
 
       - name: Run Heal Models
         run: |
-          dbt run -m "<evm_chain>_models,tag:heal" --vars '{"HEAL_MODEL":True}'
+          dbt run -m "boba_models,tag:heal" --vars '{"HEAL_MODEL":True}'

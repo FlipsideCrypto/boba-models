@@ -42,4 +42,4 @@ jobs:
 
       - name: Run Curated Models
         run: |
-          dbt run -m "<evm_chain>_models,tag:curated" "fsc_evm,tag:curated"
+          dbt run -m "boba_models,tag:curated" "fsc_evm,tag:curated"
