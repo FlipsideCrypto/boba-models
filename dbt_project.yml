@@ -80,6 +80,12 @@ models:
         +enabled: true
       utils:
         +enabled: true
+    decoder_package:
+      +enabled: false
+      abis:
+        +enabled: true
+      decoded_logs:
+        +enabled: true
 
 vars:
   "dbt_date:time_zone": GMT
@@ -149,10 +155,14 @@ vars:
   TRACES_HISTORY_SQL_LIMIT: 1000000
 
   TRACES_REQUEST_START_BLOCK: 1149019
+  TRACES_FULL_RELOAD_START_BLOCK: 15000000
 
   ### PRICES ###
   ## REQUIRED
   PRICES_NATIVE_SYMBOLS: "ETH"
   PRICES_PROVIDER_PLATFORMS: ["boba network", "boba"]
+
+  BLOCK_EXPLORER_NAME: "routescan"
+  BLOCK_EXPLORER_ABI_URL: "https://api.routescan.io/v2/network/mainnet/evm/288/etherscan/api?module=contract&action=getabi&address="
 
 #### FSC_EVM END ####
