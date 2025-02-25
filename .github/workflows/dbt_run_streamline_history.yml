@@ -40,6 +40,10 @@ jobs:
           pip install -r requirements.txt
           dbt deps
           
-      - name: Run History Models
+      - name: Update complete table
         run: |
-          dbt run --vars '{"STREAMLINE_INVOKE_STREAMS":True}' -m "fsc_evm,tag:streamline_core_complete" "fsc_evm,tag:streamline_core_history" "fsc_evm,tag:streamline_core_complete_receipts" "fsc_evm,tag:streamline_core_history_receipts" 
+          dbt run -m "fsc_evm,tag:streamline_decoded_logs_complete"
+
+      - name: Decode historical logs
+        run: |
+          dbt run-operation fsc_evm.decoded_logs_history --vars '{"STREAMLINE_INVOKE_STREAMS":True}'
