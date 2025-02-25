@@ -2,3 +2,8 @@ workflow_name,workflow_schedule
 dbt_run_dev_refresh,"29 4 * * 1"
 dbt_run_streamline_chainhead,"3,33 * * * *"
 dbt_run_scheduled_main,"43 * * *"
+dbt_test_intraday,"9 */4 * * *"
+dbt_test_daily,"34 7 * * *"
+dbt_run_scheduled_decoded_logs,"37 * * * *"
+dbt_run_scheduled_abis,"33 23 * * *"
+dbt_run_scheduled_decoded_logs_history,"31 22 * * 6"
