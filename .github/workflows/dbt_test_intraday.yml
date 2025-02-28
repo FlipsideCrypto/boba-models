@@ -46,6 +46,5 @@ jobs:
 
       - name: Run Recent Tests
         run: >
-          dbt test -m "fsc_evm,tag:recent_test" --exclude
-          "fsc_evm.main_package.core.nft.tests.dbt_expectations_expect_row_values_to_have_recent_data_test_nft__ez_nft_transfers_recent_BLOCK_TIMESTAMP__hour__3
-          fsc_evm.main_package.core.nft.tests.dbt_expectations_expect_row_values_to_have_recent_data_test_nft__ez_nft_transfers_recent_INSERTED_TIMESTAMP__hour__3"
+          dbt test -m "fsc_evm,tag:recent_test" --exclude "fsc_evm.main_package.core.nft.tests.dbt_expectations_expect_row_values_to_have_recent_data_test_nft__ez_nft_transfers_recent_BLOCK_TIMESTAMP__hour__3 fsc_evm.main_package.core.nft.tests.dbt_expectations_expect_row_values_to_have_recent_data_test_nft__ez_nft_transfers_recent_INSERTED_TIMESTAMP__hour__3"
+          
