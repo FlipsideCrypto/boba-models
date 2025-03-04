@@ -86,6 +86,8 @@ models:
         +enabled: true
       decoded_logs:
         +enabled: true
+    scores_package:
+      +enabled: true
 
 vars:
   "dbt_date:time_zone": GMT
