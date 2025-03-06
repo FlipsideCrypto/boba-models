@@ -24,7 +24,7 @@ concurrency:
 jobs:
   run_dbt_jobs:
     runs-on: ubuntu-latest
-    environment: 
+    environment:
       name: workflow_test
 
     steps:
@@ -39,7 +39,11 @@ jobs:
         run: |
           pip install -r requirements.txt
           dbt deps
-      
+
       - name: Run ABI Models
         run: |
           dbt run -m "fsc_evm,tag:silver_abis" "fsc_evm,tag:gold_abis"
+
+      - name: Kick off decoded logs history, if there are new ABIs from users
+        run: |
+          dbt run-operation fsc_evm.run_decoded_logs_history
