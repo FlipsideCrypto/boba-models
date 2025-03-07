@@ -108,7 +108,7 @@ vars:
 
   config:
   # The keys correspond to dbt profiles and are case sensitive
-    dev:
+    dev:r
       API_INTEGRATION: AWS_BOBA_API_STG_V2
       EXTERNAL_FUNCTION_URI: zilwuuus83.execute-api.us-east-1.amazonaws.com/stg/
       ROLES:
@@ -160,6 +160,7 @@ vars:
   ### PRICES ###
   ## REQUIRED
   PRICES_NATIVE_SYMBOLS: "ETH"
+  PRICES_NATIVE_BLOCKCHAINS: "ethereum"
   PRICES_PROVIDER_PLATFORMS: ["boba network", "boba"]
 
   BLOCK_EXPLORER_NAME: "routescan"
