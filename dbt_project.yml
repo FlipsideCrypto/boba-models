@@ -108,7 +108,7 @@ vars:
 
   config:
   # The keys correspond to dbt profiles and are case sensitive
-    dev:r
+    dev:
       API_INTEGRATION: AWS_BOBA_API_STG_V2
       EXTERNAL_FUNCTION_URI: zilwuuus83.execute-api.us-east-1.amazonaws.com/stg/
       ROLES:
