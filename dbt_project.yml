@@ -162,6 +162,7 @@ vars:
   ### PRICES ###
   ## REQUIRED
   PRICES_NATIVE_SYMBOLS: "ETH"
+  PRICES_NATIVE_BLOCKCHAINS: "ethereum"
   PRICES_PROVIDER_PLATFORMS: ["boba network", "boba"]
 
   BLOCK_EXPLORER_NAME: "routescan"
