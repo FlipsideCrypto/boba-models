@@ -161,7 +161,6 @@ vars:
 
   ### PRICES ###
   ## REQUIRED
-
   MAIN_PRICES_TOKEN_WETH_ENABLED: true
   PRICES_PROVIDER_PLATFORMS: ["boba network", "boba"]
 
