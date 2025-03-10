@@ -133,7 +133,7 @@ vars:
   GLOBAL_NODE_SECRET_PATH: "Vault/prod/boba/blockjoy/mainnet"
   GLOBAL_NODE_URL: '{Service}'
   GLOBAL_BLOCKS_PER_HOUR: 1800
-  GLOBAL_WRAPPED_ASSET_ADDRESS: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'
+  GLOBAL_WRAPPED_ASSET_ADDRESS: '0xdeaddeaddeaddeaddeaddeaddeaddeaddead0000'
 
 # Please visit https://github.com/FlipsideCrypto/fsc-evm/wiki for more information on required and optional variables
 
