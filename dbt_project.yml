@@ -131,8 +131,7 @@ vars:
   #### FSC_EVM BEGIN ####
 
   GLOBAL_PROD_DB_NAME: "boba"
-  GLOBAL_NODE_SECRET_PATH: "Vault/prod/boba/blockjoy/mainnet"
-  GLOBAL_NODE_URL: "{Service}"
+  GLOBAL_NODE_SECRET_PATH: "Vault/prod/boba/drpc/mainnet"
   GLOBAL_BLOCKS_PER_HOUR: 1800
   GLOBAL_WRAPPED_ASSET_ADDRESS: "0xdeaddeaddeaddeaddeaddeaddeaddeaddead0000"
 
