@@ -52,4 +52,4 @@ deploy_phase_2:
 	dbt run -m "fsc_evm,tag:phase_2,tag:bronze_abis" --vars '{"BRONZE_CONTRACT_ABIS_FULL_REFRESH":"true"}' -t $(DBT_TARGET)
 	dbt run -m "fsc_evm,tag:phase_2" --exclude tag:bronze_abis -t $(DBT_TARGET)
 	
-.PHONY: deploy_streamline_functions deploy_streamline_tables deploy_streamline_requests deploy_github_actions cleanup_time deploy_new_github_action deploy_streamline_history deploy_phase_2 copy-selectors
+.PHONY: deploy_streamline_functions deploy_streamline_tables deploy_streamline_requests deploy_github_actions cleanup_time deploy_new_github_action deploy_streamline_history deploy_phase_2
