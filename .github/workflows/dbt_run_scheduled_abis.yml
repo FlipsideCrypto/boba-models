@@ -42,7 +42,7 @@ jobs:
 
       - name: Run ABI Models
         run: |
-          dbt run -m "fsc_evm,tag:silver_abis" "fsc_evm,tag:gold_abis"
+          dbt run --selector abis
 
       - name: Kick off decoded logs history, if there are new ABIs from users
         run: |

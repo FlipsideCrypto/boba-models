@@ -43,4 +43,4 @@ jobs:
 
       - name: Update scores
         run: |
-          dbt run -m "fsc_evm,tag:scores"
+          dbt run -m "fsc_evm,tag:scores_package"
