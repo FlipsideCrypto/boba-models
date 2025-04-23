@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
     branches:
       - "main"
-    
+
 env:
   DBT_PROFILES_DIR: ./
 
@@ -24,7 +24,7 @@ concurrency:
 jobs:
   run_dbt_jobs:
     runs-on: ubuntu-latest
-    environment: 
+    environment:
       name: workflow_prod_2xl
 
     steps:
@@ -43,6 +43,10 @@ jobs:
       - name: Run Observability Models
         run: |
           dbt run --threads 2 --vars '{"OBSERV_FULL_TEST":True}' -m "fsc_evm,tag:observability"
-  
 
-
+  notify-failure:
+    needs: [run_dbt_jobs]
+    if: failure()
+    uses: FlipsideCrypto/fsc-evm/.github/workflows/slack_notify.yml@main
+    secrets:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
