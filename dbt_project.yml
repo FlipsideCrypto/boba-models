@@ -71,11 +71,15 @@ models:
     +on_schema_change: "append_new_columns"
     main_package:
       +enabled: false # disable main_package by default, enabled other packages as needed
+      admin:
+        +enabled: true
       core:
         +enabled: true # enable subpackages, as needed
       github_actions:
         +enabled: true
       labels:
+        +enabled: true
+      observability:
         +enabled: true
       prices:
         +enabled: true
@@ -87,6 +91,10 @@ models:
         +enabled: true
       decoded_logs:
         +enabled: true
+    curated_package:
+      +enabled: false
+      stats:
+        +enabled: true
     scores_package:
       +enabled: true
 
@@ -96,11 +104,9 @@ vars:
   STREAMLINE_USE_DEV_FOR_EXTERNAL_TABLES: False
   UPDATE_UDFS_AND_SPS: False
   UPDATE_SNOWFLAKE_TAGS: True
-  OBSERV_FULL_TEST: False
   WAIT: 0
   HEAL_MODEL: False
   HEAL_MODELS: []
-  START_GHA_TASKS: False
 
   #### STREAMLINE 2.0 BEGIN ####
 
@@ -127,53 +133,3 @@ vars:
         - DBT_CLOUD_BOBA # replace with the name of the chain
 
   #### STREAMLINE 2.0 END ####
-
-  #### FSC_EVM BEGIN ####
-
-  GLOBAL_PROD_DB_NAME: "boba"
-  GLOBAL_NODE_SECRET_PATH: "Vault/prod/boba/drpc/mainnet"
-  GLOBAL_BLOCKS_PER_HOUR: 1800
-  GLOBAL_WRAPPED_ASSET_ADDRESS: "0xdeaddeaddeaddeaddeaddeaddeaddeaddead0000"
-
-  # Please visit https://github.com/FlipsideCrypto/fsc-evm/wiki for more information on required and optional variables
-
-  BLOCKS_TRANSACTIONS_REALTIME_NEW_BUILD: True
-  RECEIPTS_REALTIME_NEW_BUILD: True
-  TRACES_REALTIME_NEW_BUILD: True
-
-  BLOCKS_TRANSACTIONS_HISTORY_NEW_BUILD: True
-  BLOCKS_TRANSACTIONS_PRODUCER_BATCH_SIZE: 5000
-  BLOCKS_TRANSACTIONS_HISTORY_WORKER_BATCH_SIZE: 1000
-  BLOCKS_TRANSACTIONS_HISTORY_SQL_LIMIT: 1000000
-
-  RECEIPTS_HISTORY_NEW_BUILD: True
-  RECEIPTS_HISTORY_PRODUCER_BATCH_SIZE: 5000
-  RECEIPTS_HISTORY_WORKER_BATCH_SIZE: 1000
-  RECEIPTS_HISTORY_SQL_LIMIT: 1000000
-
-  TRACES_HISTORY_NEW_BUILD: True
-  TRACES_HISTORY_PRODUCER_BATCH_SIZE: 2000
-  TRACES_HISTORY_WORKER_BATCH_SIZE: 1000
-  TRACES_HISTORY_SQL_LIMIT: 1000000
-
-  TRACES_REQUEST_START_BLOCK: 1149019
-  TRACES_FULL_RELOAD_START_BLOCK: 15000000
-
-  ### PRICES ###
-  ## REQUIRED
-  MAIN_PRICES_TOKEN_WETH_ENABLED: true
-  PRICES_NATIVE_SYMBOLS: "ETH"
-  PRICES_NATIVE_BLOCKCHAINS: "ethereum"
-  PRICES_PROVIDER_PLATFORMS: ["boba network", "boba"]
-
-  ### DECODER_PACKAGE VARIABLES BEGIN ###
-  DECODER_ABIS_BLOCK_EXPLORER_NAME: "routescan"
-  DECODER_ABIS_BLOCK_EXPLORER_URL: "https://api.routescan.io/v2/network/mainnet/evm/288/etherscan/api?module=contract&action=getabi&address="
-  DECODER_ABIS_BLOCK_EXPLORER_URL_SUFFIX: ""
-  DECODER_ABIS_BLOCK_EXPLORER_SECRET_PATH: ""
-  DECODER_ABIS_RELEVANT_CONTRACT_LIMIT: 50
-  DECODER_ABIS_RELEVANT_CONTRACT_COUNT: 200
-  DECODER_ABIS_BRONZE_API_TABLE_ENABLED: True
-
-  ### DECODER_PACKAGE VARIABLES END ###
-#### FSC_EVM END ####
