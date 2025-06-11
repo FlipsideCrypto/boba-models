@@ -85,6 +85,8 @@ models:
         +enabled: true
       utils:
         +enabled: true
+      token_reads:
+        +enabled: true
     decoder_package:
       +enabled: false
       abis:
