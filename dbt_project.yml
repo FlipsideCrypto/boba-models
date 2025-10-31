@@ -98,6 +98,12 @@ models:
       +enabled: false
       stats:
         +enabled: true
+    balances_package:
+      +enabled: false
+      erc20:
+        +enabled: true
+      native:
+        +enabled: true
     scores_package:
       +enabled: true
 
