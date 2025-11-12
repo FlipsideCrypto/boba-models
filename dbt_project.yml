@@ -98,6 +98,12 @@ models:
       +enabled: false
       stats:
         +enabled: true
+      defi:
+        +enabled: false
+        bridge:
+          +enabled: true
+        dex:
+          +enabled: true
       chain_stats:
         +enabled: true
     balances_package:
