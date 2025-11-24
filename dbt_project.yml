@@ -104,9 +104,9 @@ models:
           +enabled: true
         dex:
           +enabled: true
-      chain_stats:
-        +enabled: true
       stablecoins:
+        +enabled: true
+      chain_stats:
         +enabled: true
     balances_package:
       +enabled: false
