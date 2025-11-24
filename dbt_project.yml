@@ -106,6 +106,8 @@ models:
           +enabled: true
         stablecoins:
           +enabled: true
+        lending:
+          +enabled: true
       chain_stats:
         +enabled: true
     balances_package:
