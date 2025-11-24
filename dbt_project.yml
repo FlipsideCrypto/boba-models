@@ -104,6 +104,8 @@ models:
           +enabled: true
         dex:
           +enabled: true
+        stablecoins:
+          +enabled: true
         lending:
           +enabled: true
       chain_stats:
