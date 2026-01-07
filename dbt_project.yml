@@ -108,6 +108,10 @@ models:
           +enabled: true
         lending:
           +enabled: true
+        tvl:
+          +enabled: true
+      contract_reads:
+        +enabled: true
       chain_stats:
         +enabled: true
     balances_package:
